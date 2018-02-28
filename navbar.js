@@ -30,6 +30,8 @@ var output =
 	  		He also wants a job/internship. Maybe you should help him out.\
 	  	</p>\
 	  </div>\
+	    <div><a href="https://fthmb.tqn.com/hIWmQMsJPN3j_eFPrSPVVse_52Q=/2121x1414/filters:fill(auto,1)/GettyImages-185002046-5772f4153df78cb62ce1ad69.jpg">Help me out</div>\
+	    <div><a href="https://www.wikihow.com/Be-Generous">Don\'t help me out</div>\
 	</div>\
 \
 	<script type="text/javascript">\
