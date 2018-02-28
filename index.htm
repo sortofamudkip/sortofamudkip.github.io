@@ -69,7 +69,7 @@
 					<li>Bitwise operations</li>
 				</ul>
 			</li>
-			<li>A high tolerance for pain.</li>
+			<li>A high tolerance for pain. Don't think about getting any sleep.</li>
 		</ol>
 		<ol type="1" class = "lang tw" style="font-size: 1.3em;">
 			<li>熟悉極限(limit)的概念</li>
@@ -80,19 +80,5 @@
 
 </body>
 
-<script type="text/javascript">
-	var A = document.getElementsByClassName("lang");
-	for (var i = 0; i < A.length; i++) {
-		if (A[i].className.indexOf("lang eng") == -1) A[i].style.display = "none";
-	}
-	function switch_lang(lang) {
-		// document.getElementsByClassName("lang")[0].innerHTML = "";
-		console.log("ddddd");
-		var A = document.getElementsByClassName("lang");
-		for (var i = 0; i < A.length; i++) {
-			if (A[i].className.indexOf("lang " + lang) != -1) A[i].style.display = "block";
-			else A[i].style.display = "none";
-		}
-	}
-	</script>
+<script src="lang.js"></script>
 </html>
