@@ -136,6 +136,14 @@ button.isequal :hover {
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
+.sidenav a:link {
+	color: white;
+}
+
+.sidenav a:visited {
+	color: green;
+}
+
 .sidenav .closebtn {
     position: absolute;
     top: 0;
