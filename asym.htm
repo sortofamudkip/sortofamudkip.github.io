@@ -37,7 +37,7 @@
 		</p>
 		<p>
 			<span class="lang eng">
-				For example, bubblesort will run extremely quickly when there are 10 elements, but extremely slowly when there are 10000. 				
+				For example, bubblesort will run extremely quickly when there are $10$ elements, but extremely slowly when there are $10000$.
 			</span>
 			<span class="lang tw">
 			 	譬如說, 泡沫排序若只要排10個元素, 就會及時完成, 而10000個元素會導致排序非常慢.
@@ -45,8 +45,8 @@
 		</p>
 		<p>
 			<span class="lang eng">
-				The size of the input is usually denoted as a positive integer \(n\).
-			</span>			
+				The size of the input is usually denoted as a positive integer \(n\). For example, if you need to sort $500$ elements, then \(n = 500\).
+			</span>			 
 			<span class="lang tw">
 				資料大小(數量)即以正整數 \(n\) 表示.
 			</span>
@@ -60,7 +60,7 @@
 				未填
 			</span>
 		</p>
-		<div class = "code" style="width: 300px; height: 110px;">
+		<div class = "code" style="width: 300px; height: 100px;">
 			<code><pre>
 int isInArray(Array A, int k) {  
     for (int i = 0; i < A.size; i++) { 
@@ -72,7 +72,7 @@ int isInArray(Array A, int k) {
 		</div>
 		<div style="line-height: 1.3">
 			<span class="lang eng">
-				As you can see, the function loops through the array \(n\) times each time doing the following:
+				As you can see, the function loops through the array \(n\) times, each time doing the following:
 				<ol type="1">
 					<li>checking a condition</li>
 					<li>executing the interior of the code</li>
@@ -88,22 +88,22 @@ int isInArray(Array A, int k) {
 				</ol>
 			</span>
 
-			<h3><span class="lang eng">"Constant time"</span><span class="lang tw">"常數時間"</span></h3>
 			<p>
 				<span class="lang eng">
-					Now, basic things like accessing a member of an array, comparing two values, incrementing, all have something in common: they do <b>not</b> depend on the size of the input. <code>A</code> could have held \(1000000\) items and the operation <code>int i = 0;</code> or <code>A[i]</code> would have still taken the same amount of time. In fact, we'll give <code>int i = 0;</code> a runtime: a constant called \(c_0\) (in Whichh we don't particularly care what the value is). We call this runtime <b>constant</b> time. 
+					Let's look at the runtime of this algorithm. We immediately notice that basic things like accessing a member of an array, comparing two values, incrementing, all have something in common: they do <b>not</b> depend on the size of the input. <code>A</code> could have held \(1000000\) items and the operation <code>int i = 0;</code> or <code>A[i]</code> would have still taken the same amount of time. 
 				</span>
 				<span class="lang tw">
-					喵
+					上面的運算很顯然都是跟資料大小完全無關. 陣列有十個或十萬個東西也不會影響 <code>int i = 0;</code> 這個運作.
 				</span>
 			</p>
 			<p>
 				<span class="lang eng">
+					In fact, we'll give <code>int i = 0;</code> a runtime: a constant called \(c_0\) (in which we don't particularly care what the value is). We call this kind of runtime <b>constant</b> time, since it isn't related to \(n\) in any way. 
 					For simplicity, the entire <code>if</code> statement will be represented just by one constant (even though there are several things going on inside), \(c_1\).
 					Similarily, <code>i < A.size</code> and <code>i++</code> both take constant time. We give these two runtimes of \(c_2\) and \(c_3\). 
 				</span>
 				<span class="lang tw">
-					米
+					這個運算的執行時間設為 \(c_0\) 好了, 而且我們不會管它真正的值是多少. 這些與 \(n\) 無關的執行時間叫做 "常數時間".
 				</span>
 			</p>
 			<p>
@@ -111,26 +111,41 @@ int isInArray(Array A, int k) {
 					That being said, the entire loop is executed at most \(n\) times. This is important! This means that <b>the loop's runtime is related to the size of \(n\).</b> There will clearly be a difference if the array was \(10\) or \(1000000000\) items big!
 				</span>
 				<span class="lang tw">
-					馬
+					但是注意一下, 整個迴圈的總次數會跑最多 \(n\) 次, 所以當然會跟輸入大小有關. 你陣列元素越多, 你演算法當然會花越多時間去檢查陣列.
 				</span>				
 			</p>
 			<p>
 				<span class="lang eng">
-					Thus we can conclude that the function has a runtime of at most $$f(n) = c_0 + (c_1 + c_2)n.$$
-					This is called the <b>worst-case</b> runtime because the function will, at worst, run that long. 
+					Thus we can conclude that the algorithm has a runtime of at most $$f(n) = c_0 + (c_1 + c_2)n.$$
+					This is called the <b>worst-case</b> runtime because the algorithm will, at worst, run that long. 
 				</span>
 				<span class="lang tw">
-					馬
+					因此, 演算法的執行時間為 $$f(n) = c_0 + (c_1 + c_2)n.$$ 此\(f(n)\)之所以跑最多這麼久,也叫做 <b>最爛執行時間</b>.
 				</span>				
 			</p>
 			<p>
 				<span class="lang eng">
 					Being the nice people we are, however, we will pretend the constants do not exist and simplify to $$f(n) = n.$$
 					The <b>best case</b> runtime would be \(c_0 + c_1 + c_2\), which of course is a constant time.
+				</span>
+				<span class="lang tw">
+					通常常數其實不是很重要, 所以可以把它簡化成 $$f(n) = n.$$
+				</span>				
+			</p>
+			<p>
+				<span class="lang eng">
+					The <b>best case</b> runtime would be \(c_0 + c_1 + c_2\) (a match is found at the first element, so the loop is only executed once), which of course is a constant time.
+				</span>
+				<span class="lang tw">
+					<b>最好執行時間</b> \(= c_0 + c_1 + c_2\) 就是當你第一個元素就找到了, 所以迴圈裡面只跑一次. 這也是常數時間. 
+				</span>				
+			</p>
+			<p>
+				<span class="lang eng">
 					<b>The takeaway: if the operation isn't related to the size of the input, it doesn't matter.</b>
 				</span>
 				<span class="lang tw">
-					馬
+					<b>總結: 如果跟輸入大小無關就不用管他.</b>
 				</span>				
 			</p>
 			<h3><span class="lang eng">Comparing functions</span><span class="lang tw">函數比較</span></h3>
@@ -160,7 +175,7 @@ int hasDupli(Array A) {
 					You will see that, as \(n\) gets very large, \(g(n)\) will be larger than \(f(n)\), and the larger \(n\) gets, the larger the distance between the two become. Thus, \(g(n)\) acts somewhat like an asymptote to \(f(n)\), in that <b>at some point, \(f(n)\) is always guaranteed to never intersect with \(g(n)\).</b> Another way of saying this is that <b>\(g(n)\) grows much faster than \(f(n)\)</b>, a concept you may have learned in Calculus.
 				</span>
 				<span class="lang tw">
-					馬米
+					可見, 最裡面的迴圈會跑一次, 然後兩次, 這樣一直到 \(n-1\) 次, 總共為 \(1+2+3+...+n-1 = \frac{n(n-1)}{2}\) 次. 如果先不管常數的話, 我們可以說此函數的執行時間為 $$g(n) = n^2-n.$$ 那麼, 當 \(n) 變很大的時候, \(g(n)\) 與 \(f(n)\) 的差異會非常大, 而且可以保證 \(f(n)\) 永遠不會再跟 \(g(n)\) 有交點. 也就是說, <b>\(g(n)\) 成長速度比 \(f(n)\) 快許多.</b>
 				</span>				
 			</p>
 			<p>
@@ -168,8 +183,8 @@ int hasDupli(Array A) {
 					Now, since we're talking about runtime, if your runtime grows very fast, your function will obviously take a lot more time. <b>This is called "inefficiency".</b> Since \(f(n)\) grows much slower than \(g(n)\), we often say that \(f(n)\) is more efficient than \(g(n)\), that is, an algorithm with runtime \(f(n)\) will be much, much faster than an algorithm with runtime \(g(n)\). 
 				</span>
 				<span class="lang tw">
-					書齊
-				</span>				
+					我們既然是在講到執行時間, 如果執行時間長得很快的話, 你的演算法就會依然跑很慢.
+				</span>
 			</p>
 
 			<!-- continue here -->
