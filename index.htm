@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>DSA thingy</title>
+</head>
+
+<body>
+
+	<script src="navbar.js"></script>
+
+	<div id="container" style="">
+		<img src="kippp.jpg" style="padding-top: 50px;" id="animate">	
+	</div>
+
+	<script src="mudkip.js"></script>
+
+	<div style="margin-top:30px;padding:22px;">
+		<h1 class="lang eng">DSA Notes</h1>
+		<h1 class="lang tw" >DSA 筆記</h1>
+		<p class="lang eng">These notes will hopefully get you through DSA. Not that it's PF difficulty.</p>
+		<p class="lang tw">資料結構與演算法小筆記</p>
+
+		<h2 class="lang eng">Introduction to DSA</h2>
+		<h2 class="lang tw" >DSA 簡介</h2>
+		<p class="lang eng">
+			DSA, which stands for <b>D</b>ata <b>S</b>ructures and <b>A</b>lgorithms, is the class that teaches what to use in order to quickly store and handle information, depending on the situation.
+			As it says on the tin, DSA is comprised of two larger topics:
+			<ul class = "lang eng">
+				<li><b>Data Structures</b>: Sometimes, arrays are simply not good enough to handle everything. They can be very slow, depending on what you do with them. There might better ways we can store information. Those are called data structures.</li>
+				<li><b>Algorithms</b>: Algorithms are how the information is handled. The most basic algorithms are usually the slowest. To improve our speed, we will need better ways to handle information.</li>
+			</ul>
+		</p>
+		<p class="lang tw">
+			我不知道怎麼翻
+		</p>
+
+		<h2 class="lang eng">DSA Topics</h2>
+		<h2 class="lang tw" >DSA 課程大綱</h2>
+		<ol type="1" class = "lang eng">
+			<li>Stack &amp; Queue</li>
+			<li>Asymptotic Analysis</li>
+			<li>Linked List</li>
+			<li>Sorting</li>
+		</ol>
+		<ol type="1" class = "lang tw" style="font-size: 1.3em;">
+			<li>堆疊 &amp; 佇列</li>
+			<li>時間複雜度分析</li>
+			<li>連結串列</li>
+			<li>排序</li>
+		</ol>
+
+		<h2 class="lang eng">Things you need</h2>
+		<h2 class="lang tw" >上課預備</h2>
+		<ol type="1" class = "lang eng">
+			<li>Knowledge of limits. You'll need this for asymptotic analysis.</li>
+			<li>
+				Fluency in C. All your assignments will be in C. <br /> Specifically, you <em>must</em> know the following:
+				<ul>
+					<li>Everything up to pointers, i.e. loops, arrays, functions, and,  of course, pointers</li>
+					<li>Data types larger than <i>int</i>s, namely <b>unsigned long long</b>.</li>
+					<li>Structs</li>
+					<li>Recursion (though mostly for the second semester)</li>
+					<li>Basic data structures, like linked lists and binary search trees</li>
+				</ul>
+				You do not need to know these, but they are fairly useful:
+				<ul>
+					<li>Chars &amp; strings</li>
+					<li>Bitwise operations</li>
+				</ul>
+			</li>
+			<li>A high tolerance for pain.</li>
+		</ol>
+		<ol type="1" class = "lang tw" style="font-size: 1.3em;">
+			<li>熟悉極限(limit)的概念</li>
+			<li>流利於C語言</li>
+			<li>耐於痛苦之心</li>
+		</ol>	
+
+
+		<p id="um"></p>
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	var A = document.getElementsByClassName("lang");
+	for (var i = 0; i < A.length; i++) {
+		if (A[i].className.indexOf("lang eng") == -1) A[i].style.display = "none";
+	}
+	function switch_lang(lang) {
+		// document.getElementsByClassName("lang")[0].innerHTML = "";
+		console.log("ddddd");
+		var A = document.getElementsByClassName("lang");
+		for (var i = 0; i < A.length; i++) {
+			if (A[i].className.indexOf("lang " + lang) != -1) A[i].style.display = "block";
+			else A[i].style.display = "none";
+		}
+	}
+	</script>
+
+
+	
+</html>
