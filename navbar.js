@@ -5,6 +5,7 @@ var output =
 	'<li class="nav"><a href="#stack"><span class="lang eng">Stack &amp; Queue</span><span class="lang tw">堆疊 &amp; 佇列</span></a></li>' +
 	'<li class="nav"><a href="#LL"><span class="lang eng">Linked List</span><span class="lang tw">連結串列</span></a></li>' +
 	'<li class="nav"><a href="#sort"><span class="lang eng">Sorting</span><span class="lang tw">排序</span></a></li>' +
+	'<li class="nav"><a href="#sort"><span class="lang eng">C++\'s STL</span><span class="lang tw">C++ 標準庫</span></a></li>' +
 	'<li class ="" style="float:right"> <button class="nav" type="button" onclick="openNav()">' +
 	'<span class="lang eng">About</span> <span class="lang tw">關於</span>' + 
 	'</button> </li>' +

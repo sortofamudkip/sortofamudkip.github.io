@@ -104,7 +104,7 @@ button.isequal {
 	color: black;
 }
 
-button.isequal :hover {
+.isequal button:hover {
 	transition-duration: 0.5s;
     background-color: red;
     color: red;
