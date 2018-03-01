@@ -20,7 +20,7 @@
 		<img src="kippp.jpg" style="padding-top: 50px;" id="animate">	
 	</div> -->
 
-	<script src="mudkip.js"></script>
+	<!-- <script src="mudkip.js"></script> -->
 
 	<div style="margin-top:30px;padding:22px;padding-right: 240px;">
 		<h1><span class="lang eng">Asymptotic Analysis</span><span class="lang tw">時間複雜度分析</span></h1>
@@ -124,14 +124,6 @@ int isInArray(Array A, int k) {
 			<p>
 				<span class="lang eng">
 					Being the nice people we are, however, we will pretend the constants do not exist and simplify to $$f(n) = n.$$
-					The <b>best case</b> runtime would be \(c_0 + c_1 + c_2\), which of course is a constant time.
-				</span>
-				<span class="lang tw">
-					通常常數其實不是很重要, 所以可以把它簡化成 $$f(n) = n.$$
-				</span>				
-			</p>
-			<p>
-				<span class="lang eng">
 					The <b>best case</b> runtime would be \(c_0 + c_1 + c_2\) (a match is found at the first element, so the loop is only executed once), which of course is a constant time.
 				</span>
 				<span class="lang tw">
@@ -275,45 +267,6 @@ int hasDupli(Array A) {
 			</span>
 		</p>
 
-		<h3>
-			<span class="lang eng">
-				Okay, I sort of get it. But why do I care?
-			</span>
-			<span class="lang tw">
-				喔, 好, 這樣懂了一些. 但是我幹嘛要學啊?			
-			</span>
-		</h3>
-		<p>
-			<span class="lang eng">
-				You can think of big-O as a "big \(\le\)" for functions. <b>\(f(n) = O(g(n))\) means that \(f\) grows slower or at the same speed as \(g\).</b> <br> For example, in terms of speed,
-			</span>
-			<span class="lang tw">
-				你可以把大O想成函數們的 "大\(\le\)". <b>\(f(n) = O(g(n))\) 的意思是 \(f\) 成長之速度比 \(g\) 慢或差不多.</b> 譬如說, 在速度方面,
-			</span>
-		</p>
-		<ul>
-			<li><span class="lang eng">A person = \(O(\)A horse\()\).</span><span class="lang tw">人=\(O(\)馬\()\)</span></li>
-			<li><span class="lang eng">A horse = \(O(\)A car\()\).</span><span class="lang tw">馬=\(O(\)車\()\)</span></li>
-			<li><span class="lang eng">Usain Bolt = \(O(\)A Honda\()\). (He is or slower than, or as fast as, a Honda.)</span><span class="lang tw">尤山·波特=\(O(\)本田\()\). (他比本田慢, 或者他跟本田的速度差不多.)</span></li>
-		</ul>
-		<p>
-			<span class="lang eng">
-				Now, it is important to remember that the function represents <b>runtime</b>. So if a function grows really fast, then an algorithm with that runtime is going to be very slow! 
-			</span>
-			<span class="lang tw">
-				這邊也要說明一下, 這些函數們都是代表<b>執行時間</b>的, 所以如果某函數長得很快, 該演算法的執行時間就非常慢!
-			</span>
-		</p>
-		<p>
-			<span style="size: 110%; color: red; font-weight: bold; font-family: tahoma;"> 
-				<span class="lang eng">
-					Using the big-O notation, we can give an "upper bound" for a function; that is, the runtime \(f(n)\) is guaranteed to be <u>at worst</u> \(g(n)\).
-				</span>
-				<span class="lang tw">
-					我們可以使用大O符號指定某個函數的上界; 也就是說, \(f(n)\) 這個執行時間最爛最爛只能是 \(g(n)\).
-				</span>
-			</span>
-		</p>
 		<p>
 			<span class="lang eng">
 				Let's try another example, this time comparing \(f(n)=10n^2\) and \(g(n)=4n^3+8n-2\). If you graph the two out, you can see that \(f(n) \le \frac{1}{4}g(n)\) after (roughly) \(n_0 = 10\). Thus we've found our constants, and can conclude \(10n^2 = O(4n^3+8n-2)\). 
@@ -322,6 +275,23 @@ int hasDupli(Array A) {
 				再看一個例子吧. 如果想要比較 \(f(n)=10n^2\) 與 \(g(n)=4n^3+8n-2\) 的話, 就畫一下圖, 然後就會發現大約\(n_0 = 10\), \(f(n) \le \frac{1}{4}g(n)\) 永遠是真. 找到了所需要的參數, 就可以直接說 \(10n^2 = O(4n^3+8n-2)\). 
 			</span>
 		</p>
+		<p>
+			<span class="lang eng">
+				Of course, this looks really ugly. What can we do?
+			</span>
+			<span class="lang tw">
+				當然, 看起來是滿醜的. 怎麼辦?			
+			</span>
+		</p>
+		<p>
+			<span class="lang eng">
+				We can quickly prove that \(f(n)=O(4n^3)\), and thus also obtain \(f(n) = O(n^3)\). In general, we can discard terms that have lower <b>order of growth</b> to obtain a logically equivalent and simpler statement. <b>When discussing runtimes, we always describe it using the simplest big O form.</b> For example, a runtime of \(7n^3 - 8n + 9) can be simplified to \(O(n^2)\). <b>If we just have a constant, like \(O(5)\) or \(O(\frac{3}{2}\)) or \(O(\sqrt{2})\), we call it \(O(1)\).</b>
+			</span>
+			<span class="lang tw">
+				可以很快證出 \(f(n)=O(4n^3) \ \rightarrow \ f(n) = O(n^3)\). 通常我們可以 <b>把成長率比較慢的項子拿掉</b>, 而仍然得到邏輯等價以及較優雅的式子. 譬如說, \(O(7n^3 - 8n + 9)\) 可簡化成 \(O(n^2)\). <b>若函數最大項子為常數 (例: \(O(5)\), \(O(\frac{3}{2})\), \(O(\sqrt{2})\)), 可以直接寫 \(O(1)\).</b>
+			</span>
+		</p>
+
 		<h3>
 			<span class="lang eng">
 				Formally proving big O notation
@@ -414,6 +384,7 @@ int hasDupli(Array A) {
 				例如說, $$f(n)=(\log_2{n})^2 + \sqrt{n} + 8n^3 - 2$$ and $$g(n) = \frac{n}{log_2{n}} + n^4 + 1 - 5n^2$$ 正常比會累死, 所以先說明 \(f(n)=O(n^3)\) and \(g(n) = O(n^4)\) (看最大項子), 即可以馬上說 \(g(n)\) 長比 \(f(n)\) 快許多.
 			</span>
 		</p>
+		
 		<h3>
 			<span class="lang eng">
 				Examples and useful properties
@@ -429,6 +400,45 @@ int hasDupli(Array A) {
 				<li> \( f(n) = O(f(n)) \) </li>
 				<li> \( f(n) = O(g(n)) \land g(n) = O(h(n)) \rightarrow f(n) = O(h(n)) \)</li>
 			</ul> 
+			<h3>
+				<span class="lang eng">
+					Okay, I sort of get it. But why do I care?
+				</span>
+				<span class="lang tw">
+					喔, 好, 這樣懂了一些. 但是我幹嘛要學啊?			
+				</span>
+			</h3>
+			<p>
+				<span class="lang eng">
+					You can think of big-O as a "big \(\le\)" for functions. <b>\(f(n) = O(g(n))\) means that \(f\) grows slower or at the same speed as \(g\).</b> <br> For example, in terms of speed,
+				</span>
+				<span class="lang tw">
+					你可以把大O想成函數們的 "大\(\le\)". <b>\(f(n) = O(g(n))\) 的意思是 \(f\) 成長之速度比 \(g\) 慢或差不多.</b> 譬如說, 在速度方面,
+				</span>
+			</p>
+			<ul>
+				<li><span class="lang eng">A person = \(O(\)A horse\()\).</span><span class="lang tw">人=\(O(\)馬\()\)</span></li>
+				<li><span class="lang eng">A horse = \(O(\)A car\()\).</span><span class="lang tw">馬=\(O(\)車\()\)</span></li>
+				<li><span class="lang eng">Usain Bolt = \(O(\)A Honda\()\). (He is or slower than, or as fast as, a Honda.)</span><span class="lang tw">尤山·波特=\(O(\)本田\()\). (他比本田慢, 或者他跟本田的速度差不多.)</span></li>
+			</ul>
+			<p>
+				<span class="lang eng">
+					Now, it is important to remember that the function represents <b>runtime</b>. So if a function grows really fast, then an algorithm with that runtime is going to be very slow! 
+				</span>
+				<span class="lang tw">
+					這邊也要說明一下, 這些函數們都是代表<b>執行時間</b>的, 所以如果某函數長得很快, 該演算法的執行時間就非常慢!
+				</span>
+			</p>
+			<p>
+				<span style="size: 110%; color: red; font-weight: bold; font-family: tahoma;"> 
+					<span class="lang eng">
+						Using the big-O notation, we can give an "upper bound" for a function; that is, the runtime \(f(n)\) is guaranteed to be <u>at worst</u> \(g(n)\).
+					</span>
+					<span class="lang tw">
+						我們可以使用大O符號指定某個函數的上界; 也就是說, \(f(n)\) 這個執行時間最爛最爛只能是 \(g(n)\).
+					</span>
+				</span>
+			</p>
 
 		<h2><span class="lang eng">Other Notations</span><span class="lang tw">其他符號</span></h2>
 		<h3><span class="lang eng">Big</span><span class="lang tw">大</span> Omega</h3>
