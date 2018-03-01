@@ -16,13 +16,11 @@
 <body>
 	<script src="navbar.js"></script>
 
-	<div id="container" style="">
+	<!-- <div id="container" style="">
 		<img src="kippp.jpg" style="padding-top: 50px;" id="animate">	
-	</div>
+	</div> -->
 
 	<script src="mudkip.js"></script>
-
-	<!-- TODO: use <span> for languages instead. -->
 
 	<div style="margin-top:30px;padding:22px;padding-right: 240px;">
 		<h1><span class="lang eng">Asymptotic Analysis</span><span class="lang tw">時間複雜度分析</span></h1>
@@ -37,7 +35,7 @@
 		</p>
 		<p>
 			<span class="lang eng">
-				For example, bubblesort will run extremely quickly when there are $10$ elements, but extremely slowly when there are $10000$.
+				For example, bubblesort will run extremely quickly when there are \(10\) elements, but extremely slowly when there are \(10000\).
 			</span>
 			<span class="lang tw">
 			 	譬如說, 泡沫排序若只要排10個元素, 就會及時完成, 而10000個元素會導致排序非常慢.
@@ -57,10 +55,10 @@
 				Let's look at this function as an example. <code>A.size</code> refers to the number of elements in <code>A</code>.
 			</span>
 			<span class="lang tw">
-				未填
+				
 			</span>
 		</p>
-		<div class = "code" style="width: 300px; height: 100px;">
+		<div class = "code" style="width: 300px; height: 100px; margin-bottom: 5px;">
 			<code><pre>
 int isInArray(Array A, int k) {  
     for (int i = 0; i < A.size; i++) { 
@@ -90,7 +88,7 @@ int isInArray(Array A, int k) {
 
 			<p>
 				<span class="lang eng">
-					Let's look at the runtime of this algorithm. We immediately notice that basic things like accessing a member of an array, comparing two values, incrementing, all have something in common: they do <b>not</b> depend on the size of the input. <code>A</code> could have held \(1000000\) items and the operation <code>int i = 0;</code> or <code>A[i]</code> would have still taken the same amount of time. 
+					Let's look at the runtime of this algorithm. We immediately notice that basic things like accessing a member of an array, comparing two values, incrementing, all have something in common: they do <b>not</b> depend on the size of the input. <code>A</code> could have held \(10\) or \(1000000\) items and the operation <code>int i = 0;</code> or <code>A[i]</code> would have still taken the same amount of time. 
 				</span>
 				<span class="lang tw">
 					上面的運算很顯然都是跟資料大小完全無關. 陣列有十個或十萬個東西也不會影響 <code>int i = 0;</code> 這個運作.
@@ -108,15 +106,15 @@ int isInArray(Array A, int k) {
 			</p>
 			<p>
 				<span class="lang eng">
-					That being said, the entire loop is executed at most \(n\) times. This is important! This means that <b>the loop's runtime is related to the size of \(n\).</b> There will clearly be a difference if the array was \(10\) or \(1000000000\) items big!
+					That being said, the entire loop is executed at most \(n\) times. This is important! This means that <b>the loop's runtime is related to the size of \(n\).</b> There will clearly be a difference if the array was \(10\) or \(1000000000\) items large! Specifically, we can see that each time that the loop executes, it will take \(c1 + c2\) units of time.
 				</span>
 				<span class="lang tw">
-					但是注意一下, 整個迴圈的總次數會跑最多 \(n\) 次, 所以當然會跟輸入大小有關. 你陣列元素越多, 你演算法當然會花越多時間去檢查陣列.
+					但是注意一下, 整個迴圈的總次數會跑最多 \(n\) 次, 所以當然會跟輸入大小有關. 陣列元素越多, 演算法當然會花越多時間去檢查陣列. 在此例子中, 每次執行迴圈皆會花 \(c1 + c2\) 單位時間.
 				</span>				
 			</p>
 			<p>
 				<span class="lang eng">
-					Thus we can conclude that the algorithm has a runtime of at most $$f(n) = c_0 + (c_1 + c_2)n.$$
+					Thus we can conclude that the algorithm has a runtime of at most $$f(n) = c_0 + (c_1 + c_2)n.$$ 
 					This is called the <b>worst-case</b> runtime because the algorithm will, at worst, run that long. 
 				</span>
 				<span class="lang tw">
@@ -316,14 +314,6 @@ int hasDupli(Array A) {
 				</span>
 			</span>
 		</p>
-		<h3>
-			<span class="lang eng">
-				Hmm, that makes sense. I am suddenly very interested now.
-			</span>
-			<span class="lang tw">
-				喔, 原來是這樣. 我突然就對這個很有興趣.			
-			</span>
-		</h3>
 		<p>
 			<span class="lang eng">
 				Let's try another example, this time comparing \(f(n)=10n^2\) and \(g(n)=4n^3+8n-2\). If you graph the two out, you can see that \(f(n) \le \frac{1}{4}g(n)\) after (roughly) \(n_0 = 10\). Thus we've found our constants, and can conclude \(10n^2 = O(4n^3+8n-2)\). 
@@ -332,28 +322,12 @@ int hasDupli(Array A) {
 				再看一個例子吧. 如果想要比較 \(f(n)=10n^2\) 與 \(g(n)=4n^3+8n-2\) 的話, 就畫一下圖, 然後就會發現大約\(n_0 = 10\), \(f(n) \le \frac{1}{4}g(n)\) 永遠是真. 找到了所需要的參數, 就可以直接說 \(10n^2 = O(4n^3+8n-2)\). 
 			</span>
 		</p>
-		<p>
-			<span class="lang eng">
-				Of course, this looks really ugly. What can we do?
-			</span>
-			<span class="lang tw">
-				當然, 看起來是滿醜的. 怎麼辦?			
-			</span>
-		</p>
-		<p>
-			<span class="lang eng">
-				We can quickly prove that \(f(n)=O(4n^3)\), and thus also obtain \(f(n) = O(n^3)\). In general, we can discard terms that have lower <b>order of growth</b> to obtain a logically equivalent and simpler statement. For example, in \(O(7n^3 - 8n + 9)\) can be simplified to \(O(n^2)\). <b>If we just have a constant, like \(O(5)\) or \(O(\frac{3}{2}\)) or \(O(\sqrt{2})\), we call it \(O(1)\).</b>
-			</span>
-			<span class="lang tw">
-				可以很快證出 \(f(n)=O(4n^3) \ \rightarrow \ f(n) = O(n^3)\). 通常我們可以 <b>把成長率比較慢的項子拿掉</b>, 而仍然得到邏輯等價以及較優雅的式子. 譬如說, \(O(7n^3 - 8n + 9)\) 可簡化成 \(O(n^2)\). <b>若函數最大項子為常數 (例: \(O(5)\), \(O(\frac{3}{2})\), \(O(\sqrt{2})\)), 可以直接寫 \(O(1)\).</b>
-			</span>
-		</p>
 		<h3>
 			<span class="lang eng">
-				What do you mean, "quickly prove"? I hate drawing graphs.
+				Formally proving big O notation
 			</span>
 			<span class="lang tw">
-				很快個頭啊, 畫圖本來就很慢.			
+				大 O 正式證明法	
 			</span>
 		</h3>
 		<p>
@@ -392,10 +366,10 @@ int hasDupli(Array A) {
 		</p>
 		<p>
 			<span class="lang eng">
-				Here's another example: \(3n\) vs. \(2n\). We have $$3n \le 2cn$$ Since \(n \gt 0\) (how can an input size be negative?), we can divide to obtain $$3 \le 2c$$ In this case, any \(c \ge \frac{3}{2}\) and <b>any</b> \(n_0 \ge 1\) will work.
+				Here's another example: check if \(3n\ = O(2n)\). We have $$3n \le 2cn$$ Since \(n \gt 0\) (how can an input size be negative?), we can divide to obtain $$3 \le 2c$$ In this case, any \(c \ge \frac{3}{2}\) and <b>any</b> \(n_0 \ge 1\) will work.
 			</span>
 			<span class="lang tw">
-				再個例子: \(3n\) vs. \(2n\). $$3n \le 2cn$$ 因 \(n \gt 0\) (輸入數量怎麼可以是負的?), 可以把 \(n\) 除掉:$$3 \le 2c$$可知任何\(c \ge \frac{3}{2}\)而且任何\(n_0 \ge 1\)隨便取就行.
+				再個例子: 證明 \(3n\ = O(2n)\). $$3n \le 2cn$$ 因 \(n \gt 0\) (輸入數量怎麼可以是負的?), 可以把 \(n\) 除掉:$$3 \le 2c$$可知任何\(c \ge \frac{3}{2}\)而且任何\(n_0 \ge 1\)隨便取就行.
 			</span>
 		</p>
 		<h3>
@@ -409,7 +383,7 @@ int hasDupli(Array A) {
 		<p>
 			<span class="lang eng">
 				We must show that for <em>any</em> \(c\), it is impossible that \(f(n) \le cg(n)\). We do this by saving \(c\) to the very end and then showing that as \(n\) becomes very large, the inequality is unsatisfiable.
-				A trivial case is \(n\) vs \(3\). We can quickly see that $$n \le 3c$$ is obviously not going to work, since \(c\) is a <b>constant</b> but \(n\) is a variable that can grow arbitrarily large, thus always surpassing any constant \(c\). 
+				A trivial case is \(n\) vs \(3\). We can quickly see that $$n \le 3c$$ is obviously not going to work, since \(c\) is a <b>constant</b> but \(n\) is a variable that can grow arbitrarily large, thus always surpassing any constant \(c\). Thus \(n \ne O(3)\).
 			</span>
 			<span class="lang tw">
 				我們必須證明對於任何 \(c\), \(f(n) \le cg(n)\) 不可能永遠是真的. 證法是將\(c\)留到最後, 然後說明當 \(n\) 很大, 該不等式不會成立. 譬如說, \(n\) vs \(3\) 可以馬上看到 $$n \le 3c$$ 是錯的, 因為 \(c\) 是<b>常數</b>, 但是 \(n\) 可以隨意地長大, 且一定超過任何常數的值.
@@ -417,7 +391,7 @@ int hasDupli(Array A) {
 		</p>
 		<p>
 			<span class="lang eng">
-				Another example is $$2^n \le cn^{10}$$ $$\frac{2^n}{n^{10}} \le c$$ However, since the left side approaches \(\infty\) and \(c\) is a <b>constant</b>, the inequality can never be true.
+				Another example is checking if \(2^n = O(n^{10})\), i.e. $$2^n \le cn^{10}$$ $$\frac{2^n}{n^{10}} \le c$$ However, since the left side approaches \(\infty\) and \(c\) is a <b>constant</b>, the inequality can never be true. Thus \(2^n \ne O(n^{10})\).
 			</span>
 			<span class="lang tw">
 				另外個例子: $$2^n \le cn^{10}$$ $$\frac{2^n}{n^{10}} \le c$$ 但因為當\(n\)很大,左邊的值會趨近於無限大, 並且超越任何常數, 所以不等式不可能成立.

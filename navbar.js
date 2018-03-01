@@ -8,7 +8,7 @@ var output =
 	'<li class ="" style="float:right"> <button class="nav" type="button" onclick="openNav()">' +
 	'<span class="lang eng">About</span> <span class="lang tw">關於</span>' + 
 	'</button> </li>' +
-	'<li class ="" style="float:right"> <button class="nav" type="button" onclick="switch_lang(\'tw\')">' +
+	'<li class ="" style="float:right"> <button class="nav" type="button" onclick="/*switch_lang(\'tw\')*/">' +
 	'<span class="lang eng">Chinese (WIP!)</span> <span class="lang tw">中文</span>' +
 	'</button> </li>' +
 	'<li class="" style="float:right"> <button class = "nav" type="button" onclick="switch_lang(\'eng\')">' +
