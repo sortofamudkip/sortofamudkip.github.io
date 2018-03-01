@@ -83,7 +83,7 @@ li.nav :hover {
 }
 
 .c_nbutton {
-	margin-top: 7px;
+	margin-top: 11px;
 	background-color: orange; 
 	border: 1px solid green;
 	border-style: solid; 
@@ -104,7 +104,7 @@ button.isequal {
 	color: black;
 }
 
-.isequal button:hover {
+button.isequal :hover {
 	transition-duration: 0.5s;
     background-color: red;
     color: red;
