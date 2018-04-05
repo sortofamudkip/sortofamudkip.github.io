@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <script src="functions.js"></script> -->
+	<link rel="icon" 
+	      type="image/jpg" 
+	      href="kippp.jpg">
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Random Stuff</title>
+</head>
+
+<body>
+
+	<script src="home_navbar.js"></script>
+
+	<!-- <div id="container" style="">
+		<img src="kippp.jpg" style="padding-top: 50px;" id="animate">	
+	</div> -->
+
+	<!-- <script src="mudkip.js"></script> -->
+
+	<div style="margin-top:30px;padding:22px;">
+		<h1><span class="lang eng">Random Things You Should Probably Not Spend Your Time On</span><span class="lang tw">時間複雜度分析</span></h1>
+		<h2 class="lang eng"><span class="lang eng">The Edgifier</span><span class="lang tw">簡介</span></h2>
+		<p>
+			<span class="lang eng">
+				Have you ever wanted to write a message, but also have the mind of a 12 year old? Well, you can now.
+			</span>			
+			<span class="lang tw">
+			</span>
+		</p>
+		<h3 class="lang eng"><span class="lang eng">Text:</span><span class="lang tw"></span></h3>
+		<p><input type="text" id="edgy_input" style="width: 800px; font-size: 120%;"> <br /></p>
+		<p>
+			<button onclick="edgify(document.getElementById('edgy_input'), document.getElementById('edgy_output'))"
+			 style="border-radius: 14px; background-color: red; font-size: 150%;">
+				eDgIFy
+			</button> <br />
+		</p>
+		<h3 class="lang eng"><span class="lang eng">Text, but edgified:</span><span class="lang tw"></span></h3>
+		<p id="edgy_output"></p>
+
+	</div>
+
+</body>
+
+<script>
+	function edgify(input, output) {
+		var string = input.value;
+		var out = "";
+		var edgy_factor = 0.365;
+		for (var i = 0; i < string.length; i++) {
+			if (string[i] == ' ') edgy_factor = 0.365;
+			if (Math.random() - edgy_factor < 0.2) {
+				out += string[i].toUpperCase();
+				edgy_factor *= 0.5;
+			}
+			else out += string[i].toLowerCase(), edgy_factor *= 1.5;
+		}
+		output.innerHTML = out;
+	}
+</script>
+
+<script src="lang.js"></script>
+</html>
