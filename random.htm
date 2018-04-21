@@ -42,6 +42,7 @@
 		Final: <input value="0" id="fi" style="width:30px;" name="FI">
 		<button onclick="get_score()">Score</button>
 		<span id="DSA_result"> </span>
+		<span id="DSA_grade">    </span>
 
 
 		<h2 class="lang eng"><span class="lang eng">The Edgifier</span><span class="lang tw">簡介</span></h2>
@@ -105,6 +106,21 @@
 		document.getElementById("DSA_result").innerHTML = score.toPrecision(2);
 		if (score < 60) document.getElementById("DSA_result").style["color"] = "red";
 		else document.getElementById("DSA_result").style["color"] = "green";
+		grade = document.getElementById("DSA_grade");
+		if (score < 60) {
+			grade.innerHTML = "F";
+			grade.style["color"] = "red";
+		}
+		else if (score <= 62) grade.innerHTML = "C-";
+		else if (score <= 66) grade.innerHTML = "C";
+		else if (score <= 69) grade.innerHTML = "C+";
+		else if (score <= 72) grade.innerHTML = "B-";
+		else if (score <= 76) grade.innerHTML = "B";
+		else if (score <= 79) grade.innerHTML = "B+";
+		else if (score <= 84) grade.innerHTML = "A-";
+		else if (score <= 89) grade.innerHTML = "A";
+		else if (score <= 100) grade.innerHTML = "A+";
+		else grade.innerHTML = "Wow, your grade is over 100!";
 	}
 </script>
 
