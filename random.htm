@@ -26,6 +26,24 @@
 
 	<div style="margin-top:30px;padding:22px;">
 		<h1><span class="lang eng">Random Things You Should Probably Not Spend Your Time On</span><span class="lang tw">時間複雜度分析</span></h1>
+		<h2 class="lang eng"><span class="lang eng">The DSA Grade Calculator</span><span class="lang tw">lol</span></h2>
+		<p>
+			<span class="lang eng">
+			</span>			
+			<span class="lang tw">
+			</span>
+		</p>
+		HW1: <input id="hw1" style="width: 30px" type="text" name="HW1">
+		HW2: <input id="hw2" style="width: 30px;" type="text" name="HW2">
+		HW3: <input id="hw3" style="width: 30px;" type="text" name="HW3">
+		HW4: <input id="hw4" style="width: 30px;" type="text" name="HW4">
+		Participation: <input id="pa" style="width:30px; " type="text" name="PA">
+		Midterm: <input id="mi" style="width:30px;" type="text" name="MI">
+		Final: <input id="fi" style="width:30px;" name="FI">
+		<button onclick="get_score()">Score</button>
+		<span id="DSA_result"> </span>
+
+
 		<h2 class="lang eng"><span class="lang eng">The Edgifier</span><span class="lang tw">簡介</span></h2>
 		<p>
 			<span class="lang eng">
@@ -43,10 +61,11 @@
 			</button> <br />
 		</p>
 		<h3 class="lang eng"><span class="lang eng">Text, but edgified:</span><span class="lang tw"></span></h3>
-		<p id="edgy_output" style="padding-bottom: 50px;"></p>
+		<p id="edgy_output" style="padding-bottom: 60px;"></p>
 
 		<h2 class="lang eng"><span class="lang eng">Depression Meme Generator</span><span class="lang tw"></span></h2>
 		<img src="depression/5.jpg" id = 'um' onclick="getNew('um', 75)" style="max-width: 500px; max-height: 500px;">
+
 	</div>
 
 </body>
@@ -72,6 +91,20 @@
 		var random = Math.floor(Math.random() * (max + 1));
 		document.getElementById(src).src = "depression/" + random + ".jpg";
 		// document.getElementById("test").innerHTML = random;
+	}
+
+	function get_score() {
+		var HW1 = parseInt(document.getElementById("hw1").value)*0.1;
+		var HW2 = parseInt(document.getElementById("hw2").value)*0.1;
+		var HW3 = parseInt(document.getElementById("hw3").value)*0.1;
+		var HW4 = parseInt(document.getElementById("hw4").value)*0.1;
+		var par = parseInt(document.getElementById("pa").value)*0.25;
+		var mid = parseInt(document.getElementById("mi").value)*0.15;
+		var fin = parseInt(document.getElementById("fi").value)*0.2;
+		var score = HW1+HW2+HW3+HW4+par+mid+fin;
+		document.getElementById("DSA_result").innerHTML = score.toPrecision(2);
+		if (score < 60) document.getElementById("DSA_result").style["color"] = "red";
+		else document.getElementById("DSA_result").style["color"] = "green";
 	}
 </script>
 
