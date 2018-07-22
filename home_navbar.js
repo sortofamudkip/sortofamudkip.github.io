@@ -13,7 +13,7 @@ var output =
 		'</span>' +
 		'<span class ="nav" style="float:right">' +
 			'<button class="nav" type="button" onclick="">' +
-				'<span class="lang eng">Chinese (WIP!)</span> <span class="lang tw">中文</span>' +
+				'<span class="lang eng">Chinese</span> <span class="lang tw">中文</span>' +
 			'</button>' +
 		'</span>' +
 		'<span class="nav" style="float:right"> ' +
@@ -21,7 +21,8 @@ var output =
 				'<span class="lang eng">English</span> <span class="lang tw">英文</span>' +
 		  	'</button>' +
 		'</span>' +
-	'</div>'	+
+	'</div>'	
+	+
 	'<div id="mySidenav" class="sidenav"> \
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> \
 	  <div style="padding-left: 20px; word-wrap: normal;"> \
@@ -49,6 +50,7 @@ var output =
 		    document.getElementById("mySidenav").style.width = "0px";\
 		}\
 	</script>\
-	';
+	'
+	;
 
 document.write(output);
