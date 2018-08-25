@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String thingy</title>
+</head>
+<body style="font-family: Arial;">
+	<h2>Random String Generator</h2>
+	<p> Generate strings a from set of criteria.</p>
+	<ul>
+		<li>The "set" means which characters to choose from.</li>
+		<li>The "length" means how many times you want to choose this from this set.</li>
+		<li>Duplicates will appear more often. For example, "aaab" means that "a" is 3 times more likely to appear.</li>
+		<li>You can also choose from one of the sets given, like Alphabet or Digit.</li>
+	</ul>
+	<p> Examples:</p>
+	<ul>
+		<li>Set 1 contains: "abc" of length 2</li>
+		<li>Set 2 contains: "12" of length 1</li>
+		<li>Then the possible values would be "aa1", "aa2", "ab1", "ab2", ... etc.</li>
+	</ul>
+	<span id = "main">
+		Set: <input id="0_set" type="text" name="" style="width: 200px;"> 
+		Length: <input id="0_len" type="number" name="" style="width: 30px;" min="0"> 
+		Or choose from these sets:
+		<input id="0_alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet
+		<input id="0_Alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet (uppercase)
+		<input id="0_dig" type="checkbox" onclick="set_flags(this.id)" name="type" value="number"> Digit
+		<br>
+	</span>
+	<p id = "str"></p>
+	<button onclick="add_more()">Add another set</button>
+	<button onclick="gen_str()">Generate String</button>
+</body>
+	<script type="text/javascript">
+		var count = 1;
+		function save_old_vals(argument) {
+			var text = [], length = [];
+			for (let i = 0; i < count; i++) {
+				text.push(document.getElementById(`${i}_set`).value);
+				length.push(document.getElementById(`${i}_len`).value);
+			}
+			return [text, length];
+		}
+
+		function add_more() {
+			let main_str = "";
+			let list = save_old_vals(); 
+			let text = list[0]; length = list[1];
+			text.push(""), length.push("");
+			count++;
+			for (var i = 0; i < count; i++) {
+				main_str +=
+				`
+					Set: <input id="${i}_set" type="text" name="" value="${text[i]}" style="width: 200px;">
+					Length: <input id="${i}_len" type="number" name="" value="${length[i]}" style="width:30px" min="0"">
+					Or choose from these sets:
+					<input id="${i}_alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet
+					<input id="${i}_Alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet (Uppercase)
+					<input id="${i}_dig" type="checkbox" onclick="set_flags(this.id)" value="number"> Digit
+					<br>
+				`;
+			}
+			document.getElementById("main").innerHTML = main_str;
+		}
+		function set_alp(set_id) {
+			document.getElementById(`${parseInt(set_id)}_set`).value = "abcdefghijklmnopqrstuvwxyz";
+		}
+		function set_flags(set_id, flag) {
+			let number = parseInt(set_id), str = "";
+			let alp_flag = document.getElementById(`${number}_alp`).checked;
+			let Alp_flag = document.getElementById(`${number}_Alp`).checked;
+			let num_flag = document.getElementById(`${number}_dig`).checked;
+			input_box = document.getElementById(`${number}_set`);
+			if (alp_flag + num_flag + Alp_flag > 0) {
+				if (alp_flag) str += "abcdefghijklmnopqrstuvwxyz";
+				if (Alp_flag) str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				if (num_flag) str += "0123456798";
+				input_box.disabled = true;
+				input_box.style.opacity = 0.0;
+				input_box.value = str;
+			}
+			else {
+				input_box.disabled = false;
+				input_box.style.opacity = 1.0;
+				input_box.value = "";
+			}
+		}
+		function rand(len) {return Math.floor(Math.random() * len);}
+		function gen_str() {
+			let list = save_old_vals(); 
+			let text = list[0]; lengths = list[1];
+			str = "";
+			for (let i = 0; i < count; i++) {
+				for (let j = 0; j < parseInt(lengths[i]); j++) {
+					if (text[i]) str += text[i][rand(text[i].length)];
+				}
+			}
+			document.getElementById("str").innerHTML = str;
+		}
+
+	</script>
+
+</html>

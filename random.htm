@@ -25,24 +25,35 @@
 	<!-- <script src="mudkip.js"></script> -->
 
 	<div style="margin-top:30px;padding:22px;">
-		<h1><span class="lang eng">Random Things You Should Probably Not Spend Your Time On</span><span class="lang tw">時間複雜度分析</span></h1>
-		<h2 class="lang eng"><span class="lang eng">The DSA Grade Calculator</span><span class="lang tw">lol</span></h2>
-		<p>
-			<span class="lang eng">
-			</span>			
-			<span class="lang tw">
-			</span>
-		</p>
-		HW1: <input value="0" id="hw1" style="width: 30px" type="text" name="HW1">
-		HW2: <input value="0" id="hw2" style="width: 30px;" type="text" name="HW2">
-		HW3: <input value="0" id="hw3" style="width: 30px;" type="text" name="HW3">
-		HW4: <input value="0" id="hw4" style="width: 30px;" type="text" name="HW4">
-		Participation: <input value="0" id="pa" style="width:30px; " type="text" name="PA">
-		Midterm: <input value="0" id="mi" style="width:30px;" type="text" name="MI">
-		Final: <input value="0" id="fi" style="width:30px;" name="FI">
-		<button onclick="get_score()">Score</button>
-		<span id="DSA_result"> </span>
-		<span id="DSA_grade">    </span>
+		<h2>Random String Generator</h2>
+		<p> Generate strings a from set of criteria.</p>
+		<ul>
+			<li>The "set" means which characters to choose from.</li>
+			<li>The "length" means how many times you want to choose this from this set.</li>
+			<li>Duplicates will appear more often. For example, "aaab" means that "a" is 3 times more likely to appear.</li>
+			<li>You can also choose from one of the sets given, like Alphabet or Digit.</li>
+		</ul>
+		<p> Examples:</p>
+		<ul>
+			<li>Set 1 contains: "abc" of length 2</li>
+			<li>Set 2 contains: "12" of length 1</li>
+			<li>Then the possible values would be "aa1", "aa2", "ab1", "ab2", ... etc.</li>
+		</ul>
+		<span id = "main">
+			Set: <input id="0_set" type="text" name="" style="width: 200px;"> 
+			Length: <input id="0_len" type="number" name="" style="width: 30px;" min="0"> 
+			Or choose from these sets:
+			<input id="0_alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet
+			<input id="0_Alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet (uppercase)
+			<input id="0_dig" type="checkbox" onclick="set_flags(this.id)" name="type" value="number"> Digit
+			<br>
+		</span>
+		<p id = "str"></p>
+		<button onclick="add_more()">Add another set</button>
+		<button onclick="gen_str()">Generate String</button>
+
+
+
 
 
 <!-- 		<h2 class="lang eng"><span class="lang eng">The Edgifier</span><span class="lang tw">簡介</span></h2>
@@ -93,35 +104,72 @@
 		document.getElementById(src).src = "depression/" + random + ".jpg";
 		// document.getElementById("test").innerHTML = random;
 	}
-
-	function get_score() {
-		var HW1 = parseInt(document.getElementById("hw1").value)*0.1;
-		var HW2 = parseInt(document.getElementById("hw2").value)*0.1;
-		var HW3 = parseInt(document.getElementById("hw3").value)*0.1;
-		var HW4 = parseInt(document.getElementById("hw4").value)*0.1;
-		var par = parseInt(document.getElementById("pa").value)*0.25;
-		var mid = parseInt(document.getElementById("mi").value)*0.15;
-		var fin = parseInt(document.getElementById("fi").value)*0.2;
-		var score = HW1+HW2+HW3+HW4+par+mid+fin;
-		document.getElementById("DSA_result").innerHTML = score.toPrecision(2);
-		if (score < 60) document.getElementById("DSA_result").style["color"] = "red";
-		else document.getElementById("DSA_result").style["color"] = "green";
-		grade = document.getElementById("DSA_grade");
-		if (score < 60) {
-			grade.innerHTML = "F";
-			grade.style["color"] = "red";
+		var count = 1;
+		function save_old_vals(argument) {
+			var text = [], length = [];
+			for (let i = 0; i < count; i++) {
+				text.push(document.getElementById(`${i}_set`).value);
+				length.push(document.getElementById(`${i}_len`).value);
+			}
+			return [text, length];
 		}
-		else if (score <= 62) grade.innerHTML = "C-";
-		else if (score <= 66) grade.innerHTML = "C";
-		else if (score <= 69) grade.innerHTML = "C+";
-		else if (score <= 72) grade.innerHTML = "B-";
-		else if (score <= 76) grade.innerHTML = "B";
-		else if (score <= 79) grade.innerHTML = "B+";
-		else if (score <= 84) grade.innerHTML = "A-";
-		else if (score <= 89) grade.innerHTML = "A";
-		else if (score <= 100) grade.innerHTML = "A+";
-		// else grade.innerHTML = "Wow, your grade is over 100!";
-	}
+
+		function add_more() {
+			let main_str = "";
+			let list = save_old_vals(); 
+			let text = list[0]; length = list[1];
+			text.push(""), length.push("");
+			count++;
+			for (var i = 0; i < count; i++) {
+				main_str +=
+				`
+					Set: <input id="${i}_set" type="text" name="" value="${text[i]}" style="width: 200px;">
+					Length: <input id="${i}_len" type="number" name="" value="${length[i]}" style="width:30px" min="0"">
+					Or choose from these sets:
+					<input id="${i}_alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet
+					<input id="${i}_Alp" type="checkbox" onclick="set_flags(this.id)"> Alphabet (Uppercase)
+					<input id="${i}_dig" type="checkbox" onclick="set_flags(this.id)" value="number"> Digit
+					<br>
+				`;
+			}
+			document.getElementById("main").innerHTML = main_str;
+		}
+		function set_alp(set_id) {
+			document.getElementById(`${parseInt(set_id)}_set`).value = "abcdefghijklmnopqrstuvwxyz";
+		}
+		function set_flags(set_id, flag) {
+			let number = parseInt(set_id), str = "";
+			let alp_flag = document.getElementById(`${number}_alp`).checked;
+			let Alp_flag = document.getElementById(`${number}_Alp`).checked;
+			let num_flag = document.getElementById(`${number}_dig`).checked;
+			input_box = document.getElementById(`${number}_set`);
+			if (alp_flag + num_flag + Alp_flag > 0) {
+				if (alp_flag) str += "abcdefghijklmnopqrstuvwxyz";
+				if (Alp_flag) str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				if (num_flag) str += "0123456798";
+				input_box.disabled = true;
+				input_box.style.opacity = 0.0;
+				input_box.value = str;
+			}
+			else {
+				input_box.disabled = false;
+				input_box.style.opacity = 1.0;
+				input_box.value = "";
+			}
+		}
+		function rand(len) {return Math.floor(Math.random() * len);}
+		function gen_str() {
+			let list = save_old_vals(); 
+			let text = list[0]; lengths = list[1];
+			str = "";
+			for (let i = 0; i < count; i++) {
+				for (let j = 0; j < parseInt(lengths[i]); j++) {
+					if (text[i]) str += text[i][rand(text[i].length)];
+				}
+			}
+			document.getElementById("str").innerHTML = str;
+		}
+
 </script>
 
 <script src="lang.js"></script>

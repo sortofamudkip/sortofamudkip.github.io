@@ -4,7 +4,7 @@ var output =
 		'<span class="nav"><a href="random.htm"><span class="lang eng">Random Stuff</span><span class="lang tw">???</span></a></span>' +
 		'<span class="nav"><a href="DSA_home.htm"><span class="lang eng">DSA</span><span class="lang tw">資料結構與演算法</span></a></span>' +
 
-
+		
 
 		'<span class ="nav" style="float:right">' +
 			'<button class="nav" type="button" onclick="openNav()">' +
